@@ -1,0 +1,146 @@
+/* ==========================
+   Global Typography & Body
+   ========================== */
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #faf7f2;
+  background-image: url('backgrounds/linen-bg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #3b2f2f;
+  line-height: 1.6;
+}
+
+/* Soft overlay to make text readable */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(250, 247, 242, 0.85);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ==========================
+   Headings
+   ========================== */
+h1, h2, h3 {
+  font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 2.2em;
+  letter-spacing: 1px;
+  margin-top: 80px;
+  margin-bottom: 10px;
+  color: #3b2f2f;
+  border-bottom: 2px solid #a67c52;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 1.2em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #4a3f3f;
+}
+
+h3 {
+  font-weight: 400; /* regular */
+}
+
+/* ==========================
+   Navigation
+   ========================== */
+header nav {
+  background-color: #e8dfd3;
+  padding: 15px 20px;
+  text-align: center;
+  margin-top: 140px; /* pushes nav below hero */
+}
+
+header nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #3b2f2f;
+  font-weight: bold;
+}
+
+/* ==========================
+   Content & Containers
+   ========================== */
+.content {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 520px 20px 0 20px; /* top padding = hero height + some extra */
+}
+
+/* ==========================
+   Hero Section
+   ========================== */
+.hero {
+  background-image: url('banners/Hero-Banner.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: fixed;      /* keeps it always visible */
+  top: 0;               /* stick to top */
+  left: 0;
+  width: 100%;          /* full width */
+  height: 500px;        /* keep the height */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 120px 20px;
+  color: #3b2f2f;
+  text-align: left;
+  z-index: -1;          /* keep content on top of hero */
+}
+
+.hero-content {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 30px 40px;
+  border-radius: 8px;
+}
+
+.hero h1 {
+  font-size: 2.8em;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+/* ==========================
+   Buttons
+   ========================== */
+.button {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #a67c52;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* ==========================
+   Lists
+   ========================== */
+ul {
+  margin-left: 20px;
+  color: #4a3f3f;
+}
