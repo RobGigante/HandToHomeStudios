@@ -1,12 +1,20 @@
 /* ==========================
-   Global Typography & Body
+   Global Typography
    ========================== */
 body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   margin: 0;
   padding: 0;
+  color: #3b2f2f;
+  line-height: 1.6;
+}
+
+/* ==========================
+   Body Background for pages without hero
+   ========================== */
+body.has-no-hero {
   background-color: #faf7f2;
-  background-image: url('../backgrounds/linen-bg.jpg');
+  background-image: url('/backgrounds/linen-bg.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -14,7 +22,6 @@ body {
   line-height: 1.6;
 }
 
-/* Soft overlay ONLY for pages without hero */
 body.has-no-hero::before {
   content: "";
   position: fixed;
@@ -38,7 +45,7 @@ h1 {
   font-weight: 700;
   font-size: 2.2em;
   letter-spacing: 1px;
-  margin-top: 20px;
+  margin-top: 80px;
   margin-bottom: 10px;
   color: #3b2f2f;
   border-bottom: 2px solid #a67c52;
@@ -55,7 +62,7 @@ h2 {
 }
 
 h3 {
-  font-weight: 400; /* regular */
+  font-weight: 400;
 }
 
 /* ==========================
@@ -65,14 +72,7 @@ header nav {
   background-color: #e8dfd3;
   padding: 15px 20px;
   text-align: center;
-}
-
-body.has-no-hero header nav {
-  margin-top: 0; /* pages without hero */
-}
-
-body:not(.has-no-hero) header nav {
-  margin-top: 140px; /* pushes nav below hero on main page */
+  margin-top: 140px; /* pushes nav below fixed logo if hero exists */
 }
 
 header nav a {
@@ -83,52 +83,46 @@ header nav a {
 }
 
 /* ==========================
-   Content & Containers
+   Content Container
    ========================== */
-body:not(.has-no-hero) .content {
+.content {
   max-width: 900px;
-  margin: 0 auto;
-  padding: 520px 20px 20px 20px; /* main page: hero height + some extra */
+  margin: 60px auto;
+  padding: 0 20px;
 }
 
-body.has-no-hero .content {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 20px; /* normal padding for pages without hero */
+/* Add extra top padding on pages with hero to avoid overlap */
+body:not(.has-no-hero) .content {
+  padding-top: 520px; /* hero height + extra space */
 }
 
 /* ==========================
    Hero Section
    ========================== */
-body:not(.has-no-hero) .hero {
-  display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 500px;
-  background-image: url('../banners/Hero-Banner.jpg');
+.hero {
+  background-image: url('/banners/Hero-Banner.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  position: fixed;      /* keeps it always visible */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 500px;        /* keep the height */
+  display: flex;
   justify-content: flex-start;
   align-items: center;
   padding: 120px 20px;
   color: #3b2f2f;
   text-align: left;
-  z-index: -1; /* behind content */
-}
-
-body.has-no-hero .hero {
-  display: none; /* hide hero on non-main pages */
+  z-index: -1;          /* content will be on top */
 }
 
 .hero-content {
   background-color: rgba(255, 255, 255, 0.7);
   padding: 30px 40px;
   border-radius: 8px;
-  position: relative;
-  z-index: 1; /* text visible above hero background */
 }
 
 .hero h1 {
@@ -156,7 +150,7 @@ body.has-no-hero .hero {
 }
 
 /* ==========================
-   Logos
+   Logos (if used elsewhere)
    ========================== */
 .logo-container {
   position: fixed;
@@ -187,7 +181,27 @@ body.has-no-hero .hero {
 ul {
   margin-left: 20px;
   color: #4a3f3f;
-   
 }
 
+/* ==========================
+   Responsive tweaks (optional)
+   ========================== */
+@media (max-width: 768px) {
+  .hero {
+    height: 400px;
+    padding: 80px 20px;
+  }
 
+  .hero h1 {
+    font-size: 2em;
+  }
+
+  .hero p {
+    font-size: 1em;
+  }
+
+  header nav a {
+    display: block;
+    margin: 5px 0;
+  }
+}
