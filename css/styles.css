@@ -14,8 +14,8 @@ body {
   line-height: 1.6;
 }
 
-/* Soft overlay to make text readable */
-body::before {
+/* Soft overlay ONLY for pages without hero */
+body.has-no-hero::before {
   content: "";
   position: fixed;
   top: 0;
@@ -24,7 +24,7 @@ body::before {
   height: 100%;
   background-color: rgba(250, 247, 242, 0.85);
   pointer-events: none;
-  z-index: -1;
+  z-index: -1; /* behind content */
 }
 
 /* ==========================
@@ -38,7 +38,7 @@ h1 {
   font-weight: 700;
   font-size: 2.2em;
   letter-spacing: 1px;
-  margin-top: 80px;
+  margin-top: 20px;
   margin-bottom: 10px;
   color: #3b2f2f;
   border-bottom: 2px solid #a67c52;
@@ -65,7 +65,14 @@ header nav {
   background-color: #e8dfd3;
   padding: 15px 20px;
   text-align: center;
-  margin-top: 140px; /* pushes nav below hero */
+}
+
+body.has-no-hero header nav {
+  margin-top: 0; /* pages without hero */
+}
+
+body:not(.has-no-hero) header nav {
+  margin-top: 140px; /* pushes nav below hero on main page */
 }
 
 header nav a {
@@ -78,56 +85,60 @@ header nav a {
 /* ==========================
    Content & Containers
    ========================== */
-.content {
+body:not(.has-no-hero) .content {
   max-width: 900px;
-  margin: 60px auto;
-  padding: 520px 20px 0 20px; /* top padding = hero height + some extra */
+  margin: 0 auto;
+  padding: 520px 20px 20px 20px; /* main page: hero height + some extra */
+}
+
+body.has-no-hero .content {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px; /* normal padding for pages without hero */
 }
 
 /* ==========================
    Hero Section
    ========================== */
-.hero {
-  background-image: url('banners/Hero-Banner.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
+body:not(.has-no-hero) .hero {
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 500px;
-  display: flex;
+  background-image: url('banners/Hero-Banner.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   justify-content: flex-start;
   align-items: center;
   padding: 120px 20px;
   color: #3b2f2f;
   text-align: left;
-
   z-index: -1; /* behind content */
+}
+
+body.has-no-hero .hero {
+  display: none; /* hide hero on non-main pages */
 }
 
 .hero-content {
   background-color: rgba(255, 255, 255, 0.7);
   padding: 30px 40px;
   border-radius: 8px;
-
   position: relative;
-  z-index: 1; /* text visible on top */
+  z-index: 1; /* text visible above hero background */
 }
 
-/* ==========================
-   Navigation spacing fixes
-   ========================== */
-/* Only push nav down on pages that have a hero */
-body:not(.has-no-hero) header nav {
-  margin-top: 140px;
+.hero h1 {
+  font-size: 2.8em;
+  margin-bottom: 10px;
 }
 
-/* Remove extra space on pages without hero */
-body.has-no-hero header nav {
-  margin-top: 0;
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
 }
 
 /* ==========================
@@ -145,13 +156,35 @@ body.has-no-hero header nav {
 }
 
 /* ==========================
+   Logos
+   ========================== */
+.logo-container {
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.logo-container img {
+  width: 150px;
+  height: auto;
+}
+
+.logo-section {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.secondary-logo {
+  width: 50vw;
+  max-width: 600px;
+  height: auto;
+}
+
+/* ==========================
    Lists
    ========================== */
 ul {
   margin-left: 20px;
   color: #4a3f3f;
 }
-
-
-
-
