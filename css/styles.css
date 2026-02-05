@@ -1,3 +1,7 @@
+:root {
+  --header-height: 110px;
+}
+
 /* ==========================
    Global Typography
    ========================== */
@@ -19,7 +23,6 @@ body.has-no-hero {
   background-attachment: fixed;
   background-repeat: no-repeat;
   color: #2B1F15;
-  line-height: 1.6;
 }
 
 body.has-no-hero::before {
@@ -31,7 +34,7 @@ body.has-no-hero::before {
   height: 100%;
   background-color: rgba(250, 247, 242, 0.85);
   pointer-events: none;
-  z-index: -1; /* behind content */
+  z-index: -1;
 }
 
 /* ==========================
@@ -67,13 +70,29 @@ h3 {
 }
 
 /* ==========================
-   Navigation
+   Header & Navigation
    ========================== */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(245, 240, 232, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  z-index: 10;
+}
+
 header nav {
-  background-color: #e8dfd3;
   padding: 15px 20px;
   text-align: center;
-  margin-top: 140px; /* pushes nav below fixed logo if hero exists */
 }
 
 header nav a {
@@ -81,6 +100,13 @@ header nav a {
   text-decoration: none;
   color: #2B1F15;
   font-weight: bold;
+}
+
+/* Non-hero pages use solid header */
+body.has-no-hero header {
+  position: relative;
+  background: #e8dfd3;
+  backdrop-filter: none;
 }
 
 /* ==========================
@@ -92,9 +118,9 @@ header nav a {
   padding: 0 20px;
 }
 
-/* Add extra top padding on pages with hero to avoid overlap */
+/* Extra spacing only on pages with hero */
 body:not(.has-no-hero) .content {
-  padding-top: 520px; /* hero height + extra space */
+  padding-top: 560px; /* hero height + header clearance */
 }
 
 /* ==========================
@@ -106,18 +132,21 @@ body:not(.has-no-hero) .content {
   background-position: center;
   background-repeat: no-repeat;
 
-  position: fixed;      /* keeps it always visible */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 500px;        /* keep the height */
+  height: 500px;
+
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 120px 20px;
+
+  padding: calc(var(--header-height) + 40px) 20px 120px;
   color: #2B1F15;
   text-align: left;
-  z-index: -1;          /* content will be on top */
+
+  z-index: -1;
 }
 
 .hero-content {
@@ -185,12 +214,17 @@ ul {
 }
 
 /* ==========================
-   Responsive tweaks (optional)
+   Responsive tweaks
    ========================== */
 @media (max-width: 768px) {
+  header {
+    height: auto;
+    padding: 10px 0;
+  }
+
   .hero {
     height: 400px;
-    padding: 80px 20px;
+    padding: calc(var(--header-height) + 20px) 20px 80px;
   }
 
   .hero h1 {
@@ -203,11 +237,6 @@ ul {
 
   header nav a {
     display: block;
-    margin: 5px 0;
+    margin: 6px 0;
   }
 }
-
-
-
-
-
