@@ -94,23 +94,27 @@ header nav a {
   background-repeat: no-repeat;
 
   position: fixed;      /* keeps it always visible */
-  top: 0;               /* stick to top */
+  top: 0;
   left: 0;
-  width: 100%;          /* full width */
-  height: 500px;        /* keep the height */
+  width: 100%;
+  height: 500px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding: 120px 20px;
   color: #3b2f2f;
   text-align: left;
-  z-index: -1;          /* keep content on top of hero */
+
+  z-index: 0;           /* content sits above the hero background */
 }
 
 .hero-content {
   background-color: rgba(255, 255, 255, 0.7);
   padding: 30px 40px;
   border-radius: 8px;
+
+  position: relative;   /* ensures text box is above hero background */
+  z-index: 1;
 }
 
 .hero h1 {
@@ -121,6 +125,19 @@ header nav a {
 .hero p {
   font-size: 1.2em;
   margin-bottom: 20px;
+}
+
+/* ==========================
+   Navigation spacing fixes
+   ========================== */
+/* Only push nav down on pages that have a hero */
+body:not(.has-no-hero) header nav {
+  margin-top: 140px;
+}
+
+/* Remove extra space on pages without hero */
+body.has-no-hero header nav {
+  margin-top: 0;
 }
 
 /* ==========================
@@ -144,4 +161,5 @@ ul {
   margin-left: 20px;
   color: #4a3f3f;
 }
+
 
