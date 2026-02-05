@@ -24,7 +24,7 @@ body::before {
   height: 100%;
   background-color: rgba(250, 247, 242, 0.85);
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
 }
 
 /* ==========================
@@ -105,7 +105,7 @@ header nav a {
   color: #3b2f2f;
   text-align: left;
 
-  z-index: 0;           /* content sits above the hero background */
+  z-index: -1;           /* content sits above the hero background */
 }
 
 .hero-content {
@@ -161,5 +161,6 @@ ul {
   margin-left: 20px;
   color: #4a3f3f;
 }
+
 
 
