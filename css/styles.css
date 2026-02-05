@@ -24,7 +24,7 @@ body::before {
   height: 100%;
   background-color: rgba(250, 247, 242, 0.85);
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
 }
 
 /* ==========================
@@ -144,3 +144,4 @@ ul {
   margin-left: 20px;
   color: #4a3f3f;
 }
+
