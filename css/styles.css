@@ -93,7 +93,7 @@ header nav a {
   background-position: center;
   background-repeat: no-repeat;
 
-  position: fixed;      /* keeps it always visible */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -105,7 +105,7 @@ header nav a {
   color: #3b2f2f;
   text-align: left;
 
-  z-index: -1;           /* content sits above the hero background */
+  z-index: -1; /* behind content */
 }
 
 .hero-content {
@@ -113,18 +113,8 @@ header nav a {
   padding: 30px 40px;
   border-radius: 8px;
 
-  position: relative;   /* ensures text box is above hero background */
-  z-index: 1;
-}
-
-.hero h1 {
-  font-size: 2.8em;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
+  position: relative;
+  z-index: 1; /* text visible on top */
 }
 
 /* ==========================
@@ -161,6 +151,7 @@ ul {
   margin-left: 20px;
   color: #4a3f3f;
 }
+
 
 
 
