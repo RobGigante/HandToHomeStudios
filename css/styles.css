@@ -14,13 +14,37 @@ body {
   line-height: 1.6;
 }
 
-h1, h2, h3 {
-  font-family: "Lucida Bright", Georgia, "Times New Roman", serif;
+/* ==========================
+   Body Background for pages without hero
+   ========================== */
+body.has-no-hero {
+  background-color: #faf7f2;
+  background-image: url('/backgrounds/linen-bg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #4B2E1E;
+}
+
+body.has-no-hero::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(250, 247, 242, 0.85);
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* ==========================
    Headings
    ========================== */
+h1, h2, h3 {
+  font-family: "Lucida Bright", Georgia, "Times New Roman", serif;
+}
+
 h1 {
   font-weight: 700;
   font-size: 2.2em;
@@ -52,25 +76,25 @@ h3 {
    Header & Navigation
    ========================== */
 header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* logo left, nav center, button right */
-  padding: 0 5%;
-  width: 100%;
-  height: var(--header-height);
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: var(--header-height);
+
+  display: flex;
+  align-items: center;      /* vertical centering */
+  justify-content: space-between; /* distribute logo, nav, and button */
+  padding: 0 5%;            /* small padding left/right */
   background: rgba(245, 240, 232, 0.75);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   z-index: 10;
 }
 
-/* Logo */
+/* Logo on the left */
 header .site-logo {
-  height: calc(var(--header-height) * 0.8);
-  flex: none;
+  height: calc(var(--header-height) * 0.8); /* 80% of header height */
   display: flex;
   align-items: center;
 }
@@ -80,11 +104,11 @@ header .site-logo img {
   width: auto;
 }
 
-/* Centered navigation */
+/* Centered nav container */
 header nav {
   display: flex;
   justify-content: center;
-  flex: 1;
+  flex: 1; /* takes remaining space between logo and button */
 }
 
 header nav a {
@@ -92,16 +116,11 @@ header nav a {
   text-decoration: none;
   color: #4B2E1E;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  white-space: nowrap;
+  letter-spacing: 0.06em; /* micro-kerning for all caps */
 }
 
-/* Etsy button on right */
-.header-button {
-  flex: none; /* keeps button natural size */
-}
-
-.header-button .button {
+/* Etsy button on the right */
+header > .button {
   font-weight: 700;
   padding: 10px 20px;
   border-radius: 5px;
@@ -111,7 +130,28 @@ header nav a {
   white-space: nowrap;
 }
 
+/* Non-hero pages use solid header */
+body.has-no-hero header {
+  position: relative;
+  background: #e8dfd3;
+  backdrop-filter: none;
+}
+
 /* ==========================
+   Content Container
+   ========================== */
+.content {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+/* Extra spacing only on pages with hero */
+body:not(.has-no-hero) .content {
+  padding-top: 560px; /* hero height + header clearance */
+}
+
+/* ========================== 
    Hero Section
    ========================== */
 .hero {
@@ -120,21 +160,28 @@ header nav a {
   background-position: center;
   background-repeat: no-repeat;
 
-  position: relative;
+  position: relative;          
+  top: 0;
+  left: 0;
   width: 100%;
   height: 500px;
 
+  display: flex;
+  justify-content: center;     
+  align-items: center;
+
   color: #4B2E1E;
   text-align: center;
-  z-index: 0;
+
+  z-index: 0;                  
 }
 
 /* ==========================
-   Tagline Section
+   Tagline Section (below hero)
    ========================== */
 .tagline {
   max-width: 900px;
-  margin: 20px auto;
+  margin: 20px auto;          
   padding: 0 20px;
   text-align: center;
 }
@@ -163,9 +210,32 @@ header nav a {
 }
 
 /* ==========================
+   Logos (used elsewhere)
+   ========================== */
+.logo-section {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.secondary-logo {
+  width: 50vw;
+  max-width: 600px;
+  height: auto;
+}
+
+/* ==========================
+   Lists
+   ========================== */
+ul {
+  margin-left: 20px;
+  color: #4a3f3f;
+}
+
+/* ==========================
    Responsive tweaks
    ========================== */
 @media (max-width: 768px) {
+
   header {
     height: auto;
     padding: 10px 5%;
@@ -180,20 +250,28 @@ header nav a {
   header nav {
     flex-direction: column;
     width: 100%;
-    margin: 0 0 10px 0;
   }
 
   header nav a {
     display: block;
     margin: 6px 0;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.08em; /* mobile readability */
   }
 
-  .header-button .button {
+  header > .button {
     margin-bottom: 10px;
   }
 
   .hero {
     height: 400px;
+    padding: calc(var(--header-height) + 20px) 20px 80px;
+  }
+
+  .hero h1 {
+    font-size: 2em;
+  }
+
+  .hero p {
+    font-size: 1em;
   }
 }
