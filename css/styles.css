@@ -76,29 +76,27 @@ h3 {
    Header & Navigation
    ========================== */
 header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logo left, nav center, button right */
+  padding: 0 5%;
+  width: 100%;
+  height: var(--header-height);
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: var(--header-height);
-
-  display: flex;
-  align-items: center;      
-  justify-content: space-between;
-  padding: 0 5%;
   background: rgba(245, 240, 232, 0.75);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   z-index: 10;
 }
 
-/* Logo on the left */
+/* Logo */
 header .site-logo {
-  height: calc(var(--header-height) * 0.8); /* 80% of header height */
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+  height: calc(var(--header-height) * 0.8);
+  flex-shrink: 0;  /* never shrink */
 }
+
 
 header .site-logo img {
   height: 100%;
@@ -109,8 +107,8 @@ header .site-logo img {
 header nav {
   display: flex;
   justify-content: center;
-  flex: 1;
-  max-width: 60%;
+  flex: 1;           /* takes remaining space */
+  max-width: 60%;    /* limit so button is visible */
 }
 
 header nav a {
@@ -122,16 +120,20 @@ header nav a {
   white-space: nowrap;
 }
 
-/* Etsy button on the right */
-header > .button {
+
+/* Etsy button */
+.header-button {
+  flex-shrink: 0;     /* do not shrink */
+}
+
+.header-button .button {
   font-weight: 700;
   padding: 10px 20px;
   border-radius: 5px;
-  background-color: #a67c52;
+  background-color: #E35D2F;
   color: #fff;
   text-decoration: none;
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
 /* Non-hero pages use solid header */
@@ -268,3 +270,4 @@ ul {
     height: 400px;
   }
 }
+
