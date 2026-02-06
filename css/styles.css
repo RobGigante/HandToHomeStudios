@@ -6,7 +6,8 @@
    Global Typography
    ========================== */
 body {
-  font-family: "Lucida Sans Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Segoe UI", "Lucida Sans", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
   margin: 0;
   padding: 0;
   color: #4B2E1E;
@@ -41,13 +42,13 @@ body.has-no-hero::before {
    Headings
    ========================== */
 h1, h2, h3 {
-  font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
+  font-family: "Lucida Bright", Georgia, "Times New Roman", serif;
 }
 
 h1 {
   font-weight: 700;
   font-size: 2.2em;
-  letter-spacing: 1px;
+  letter-spacing: 0.04em; /* optical tightening */
   margin-top: 80px;
   margin-bottom: 10px;
   color: #4B2E1E;
@@ -61,11 +62,13 @@ h2 {
   font-size: 1.2em;
   margin-top: 20px;
   margin-bottom: 20px;
+  letter-spacing: 0.02em;
   color: #4a3f3f;
 }
 
 h3 {
-  font-weight: 400;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   color: #4a3f3f;
 }
 
@@ -99,7 +102,8 @@ header nav a {
   margin: 0 15px;
   text-decoration: none;
   color: #4B2E1E;
-  font-weight: bold;
+  font-weight: 700;
+  letter-spacing: 0.06em; /* micro-kerning for all caps */
 }
 
 /* Non-hero pages use solid header */
@@ -157,6 +161,7 @@ body:not(.has-no-hero) .content {
 
 .hero h1 {
   font-size: 2.8em;
+  letter-spacing: 0.05em;
   margin-bottom: 10px;
 }
 
@@ -175,7 +180,8 @@ body:not(.has-no-hero) .content {
   color: white;
   text-decoration: none;
   border-radius: 5px;
-  font-weight: bold;
+  font-weight: 700;
+  letter-spacing: 0.05em; /* tighter + intentional */
   margin-top: 10px;
 }
 
@@ -217,6 +223,7 @@ ul {
    Responsive tweaks
    ========================== */
 @media (max-width: 768px) {
+
   header {
     height: auto;
     padding: 10px 0;
@@ -238,6 +245,6 @@ ul {
   header nav a {
     display: block;
     margin: 6px 0;
+    letter-spacing: 0.08em; /* mobile readability */
   }
 }
-
