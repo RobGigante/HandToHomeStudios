@@ -1,5 +1,5 @@
 :root {
-  --header-height: 17px;
+  --header-height: 110px;
 }
 
 /* ==========================
@@ -248,4 +248,5 @@ ul {
     letter-spacing: 0.08em; /* mobile readability */
   }
 }
+
 
