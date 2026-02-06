@@ -84,8 +84,8 @@ header {
 
   display: flex;
   align-items: center;      
-  justify-content: space-between; /* logo left, nav center, button right */
-  padding: 0 5%;            
+  justify-content: space-between;
+  padding: 0 5%;
   background: rgba(245, 240, 232, 0.75);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -94,9 +94,10 @@ header {
 
 /* Logo on the left */
 header .site-logo {
-  height: calc(var(--header-height) * 0.8);
+  height: calc(var(--header-height) * 0.8); /* 80% of header height */
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 header .site-logo img {
@@ -104,12 +105,12 @@ header .site-logo img {
   width: auto;
 }
 
-/* Centered nav container */
+/* Centered nav */
 header nav {
   display: flex;
   justify-content: center;
-  flex: 1; 
-  max-width: 60%; /* restrict nav width so button can appear fully */
+  flex: 1;
+  max-width: 60%;
 }
 
 header nav a {
@@ -117,7 +118,8 @@ header nav a {
   text-decoration: none;
   color: #4B2E1E;
   font-weight: 700;
-  letter-spacing: 0.06em; /* micro-kerning for all caps */
+  letter-spacing: 0.06em;
+  white-space: nowrap;
 }
 
 /* Etsy button on the right */
@@ -125,13 +127,12 @@ header > .button {
   font-weight: 700;
   padding: 10px 20px;
   border-radius: 5px;
-  background-color: #E35D2F;
+  background-color: #a67c52;
   color: #fff;
   text-decoration: none;
   white-space: nowrap;
-  flex-shrink: 0; /* prevent button from shrinking */
+  flex-shrink: 0;
 }
-
 
 /* Non-hero pages use solid header */
 body.has-no-hero header {
@@ -151,11 +152,11 @@ body.has-no-hero header {
 
 /* Extra spacing only on pages with hero */
 body:not(.has-no-hero) .content {
-  padding-top: 560px; /* hero height + header clearance */
+  padding-top: 560px;
 }
 
-/* ========================== 
-   Hero Section
+/* ==========================
+   Hero Section (just image)
    ========================== */
 .hero {
   background-image: url('/banners/Hero-Banner.jpg');
@@ -163,20 +164,18 @@ body:not(.has-no-hero) .content {
   background-position: center;
   background-repeat: no-repeat;
 
-  position: relative;          
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
   height: 500px;
 
   display: flex;
-  justify-content: center;     
+  justify-content: center;
   align-items: center;
 
   color: #4B2E1E;
   text-align: center;
 
-  z-index: 0;                  
+  z-index: 0;
 }
 
 /* ==========================
@@ -184,7 +183,7 @@ body:not(.has-no-hero) .content {
    ========================== */
 .tagline {
   max-width: 900px;
-  margin: 20px auto;          
+  margin: 20px auto;
   padding: 0 20px;
   text-align: center;
 }
@@ -258,7 +257,7 @@ ul {
   header nav a {
     display: block;
     margin: 6px 0;
-    letter-spacing: 0.08em; /* mobile readability */
+    letter-spacing: 0.08em;
   }
 
   header > .button {
@@ -267,16 +266,5 @@ ul {
 
   .hero {
     height: 400px;
-    padding: calc(var(--header-height) + 20px) 20px 80px;
-  }
-
-  .hero h1 {
-    font-size: 2em;
-  }
-
-  .hero p {
-    font-size: 1em;
   }
 }
-
-
