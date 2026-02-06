@@ -141,66 +141,48 @@ body:not(.has-no-hero) .content {
 }
 
 /* ========================== 
-Hero Section
- ========================== */
-.hero { background-image: url('/banners/Hero-Banner.jpg');
- background-size: cover;
- background-position: center;
- background-repeat: no-repeat;
+   Hero Section
+   ========================== */
+.hero {
+  background-image: url('/banners/Hero-Banner.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
- position: fixed;
- top: 0;
- left: 0;
- width: 100%;
- height: 500px;
+  position: relative;          /* changed from fixed to relative */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 500px;
 
- display: flex;
- justify-content: flex-start;
- align-items: center;
+  display: flex;
+  justify-content: center;     /* center horizontally */
+  align-items: center;         /* center vertically if you add text later */
 
- padding: calc(var(--header-height) + 40px) 20px 120px;
- color: #4B2E1E;
- text-align: left;
- z-index: -1;
-} 
+  color: #4B2E1E;
+  text-align: center;
 
-.hero-content { 
- background-color: rgba(255, 255, 255, 0.7);
- padding: 30px 40px;
- border-radius: 8px;
-} 
-
-.hero h1 {
-  font-size: 2.8em;
-  letter-spacing: 0.05em;
-  margin-bottom: 10px;
- }
-.hero p { font-size: 1.2em;
- margin-bottom: 20px; }
+  z-index: 0;                  /* behind content */
+}
 
 /* ==========================
    Tagline Section (below hero)
    ========================== */
 .tagline {
   max-width: 900px;
-  margin: 20px auto;
+  margin: 20px auto;          /* spacing above/below */
   padding: 0 20px;
   text-align: center;
-
-  /* Push down below the hero */
-  position: relative;
-  z-index: 1;
-  margin-top: 500px; /* same as hero height */
 }
-
 
 .tagline p {
   font-size: 1.2em;
   font-weight: 700;
   color: #4B2E1E;
-  letter-spacing: 0.05em; /* optional micro-kerning for all caps style */
+  letter-spacing: 0.05em;
   margin: 0;
 }
+
 
 
 /* ==========================
@@ -280,6 +262,7 @@ ul {
     font-size: 1em;
   }
 }
+
 
 
 
