@@ -1,80 +1,3 @@
-:root {
-  --header-height: 110px;
-}
-
-/* ==========================
-   Global Typography
-   ========================== */
-body {
-  font-family: "Segoe UI", "Lucida Sans", "Helvetica Neue", Arial, sans-serif;
-  font-weight: 700;
-  margin: 0;
-  padding: 0;
-  color: #4B2E1E;
-  line-height: 1.6;
-}
-
-/* ==========================
-   Body Background for pages without hero
-   ========================== */
-body.has-no-hero {
-  background-color: #faf7f2;
-  background-image: url('/backgrounds/linen-bg.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  color: #4B2E1E;
-}
-
-body.has-no-hero::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(250, 247, 242, 0.85);
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* ==========================
-   Headings
-   ========================== */
-h1, h2, h3 {
-  font-family: "Lucida Bright", Georgia, "Times New Roman", serif;
-}
-
-h1 {
-  font-weight: 700;
-  font-size: 2.2em;
-  letter-spacing: 0.04em;
-  margin-top: 80px;
-  margin-bottom: 10px;
-  color: #4B2E1E;
-  border-bottom: 2px solid #a67c52;
-  display: inline-block;
-  padding-bottom: 6px;
-}
-
-h2 {
-  font-weight: 700;
-  font-size: 1.2em;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  letter-spacing: 0.02em;
-  color: #4a3f3f;
-}
-
-h3 {
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  color: #4a3f3f;
-}
-
-/* ==========================
-   Header & Navigation
-   ========================== */
 header {
   position: absolute;
   top: 0;
@@ -83,22 +6,18 @@ header {
   height: var(--header-height);
 
   display: flex;
-  align-items: center; /* vertically center logo & nav */
-  justify-content: center;
-
+  align-items: center; /* vertical centering */
+  justify-content: space-between; /* distributes logo and nav */
+  padding: 0 5%; /* small left/right padding */
   background: rgba(245, 240, 232, 0.75);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-
   z-index: 10;
-  padding: 0 0; /* remove extra padding for precise logo placement */
 }
 
-/* Logo inside header */
+/* Logo on the left */
 header .site-logo {
-  height: calc(var(--header-height) * 0.8); /* 80% of header height */
-  margin-right: auto; /* push nav to center */
-  margin-left: 20%; /* 20% from left edge */
+  height: calc(var(--header-height) * 0.8); /* 80% of header */
   display: flex;
   align-items: center;
 }
@@ -108,10 +27,11 @@ header .site-logo img {
   width: auto;
 }
 
-/* Nav styling */
+/* Center nav container */
 header nav {
-  padding: 15px 20px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex: 1; /* takes remaining space */
 }
 
 header nav a {
@@ -129,125 +49,22 @@ body.has-no-hero header {
   backdrop-filter: none;
 }
 
-/* ==========================
-   Content Container
-   ========================== */
-.content {
-  max-width: 900px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
-
-body:not(.has-no-hero) .content {
-  padding-top: 560px; /* hero height + header clearance */
-}
-
-/* ==========================
-   Hero Section
-   ========================== */
-.hero {
-  background-image: url('/banners/Hero-Banner.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 500px;
-
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-
-  padding: calc(var(--header-height) + 40px) 20px 120px;
-  color: #4B2E1E;
-  text-align: left;
-
-  z-index: -1;
-}
-
-.hero-content {
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 30px 40px;
-  border-radius: 8px;
-}
-
-.hero h1 {
-  font-size: 2.8em;
-  letter-spacing: 0.05em;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
-}
-
-/* ==========================
-   Buttons
-   ========================== */
-.button {
-  display: inline-block;
-  padding: 12px 25px;
-  background-color: #a67c52;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  margin-top: 10px;
-}
-
-/* ==========================
-   Logos (used elsewhere)
-   ========================== */
-.logo-section {
-  margin-top: 80px;
-  text-align: center;
-}
-
-.secondary-logo {
-  width: 50vw;
-  max-width: 600px;
-  height: auto;
-}
-
-/* ==========================
-   Lists
-   ========================== */
-ul {
-  margin-left: 20px;
-  color: #4a3f3f;
-}
-
-/* ==========================
-   Responsive tweaks
-   ========================== */
+/* Responsive tweaks */
 @media (max-width: 768px) {
-
   header {
     height: auto;
-    padding: 10px 0;
-    justify-content: center; /* keep nav centered on mobile */
+    padding: 10px 5%;
+    flex-direction: column;
+    justify-content: center;
   }
 
   header .site-logo {
-    margin-left: 10%; /* reduce left margin on mobile */
+    margin-bottom: 10px;
   }
 
-  .hero {
-    height: 400px;
-    padding: calc(var(--header-height) + 20px) 20px 80px;
-  }
-
-  .hero h1 {
-    font-size: 2em;
-  }
-
-  .hero p {
-    font-size: 1em;
+  header nav {
+    flex-direction: column;
+    width: 100%;
   }
 
   header nav a {
