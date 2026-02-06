@@ -183,10 +183,16 @@ Hero Section
    ========================== */
 .tagline {
   max-width: 900px;
-  margin: 20px auto; /* space above/below tagline */
+  margin: 20px auto;
   padding: 0 20px;
   text-align: center;
+
+  /* Push down below the hero */
+  position: relative;
+  z-index: 1;
+  margin-top: 500px; /* same as hero height */
 }
+
 
 .tagline p {
   font-size: 1.2em;
@@ -274,5 +280,6 @@ ul {
     font-size: 1em;
   }
 }
+
 
 
