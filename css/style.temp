@@ -3,15 +3,6 @@
    ========================== */
 
 
-
-
-
-
-
-
-
-
-
 :root {
   --header-height: 110px;
 }
@@ -98,7 +89,7 @@ header {
 
   display: flex;
   align-items: center;      /* vertical centering */
-  justify-content: space-between; /* distribute logo and nav */
+  justify-content: space-between; /* distribute logo, nav, and button */
   padding: 0 5%;            /* small padding left/right */
   background: rgba(245, 240, 232, 0.75);
   backdrop-filter: blur(6px);
@@ -122,7 +113,7 @@ header .site-logo img {
 header nav {
   display: flex;
   justify-content: center;
-  flex: 1; /* takes remaining space */
+  flex: 1; /* takes remaining space between logo and button */
 }
 
 header nav a {
@@ -131,6 +122,17 @@ header nav a {
   color: #4B2E1E;
   font-weight: 700;
   letter-spacing: 0.06em; /* micro-kerning for all caps */
+}
+
+/* Etsy button on the right */
+header > .button {
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #a67c52;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 /* Non-hero pages use solid header */
@@ -155,43 +157,47 @@ body:not(.has-no-hero) .content {
 }
 
 /* ========================== 
-Hero Section
- ========================== */
-.hero { background-image: url('/banners/Hero-Banner.jpg');
- background-size: cover;
- background-position: center;
- background-repeat: no-repeat;
+   Hero Section
+   ========================== */
+.hero {
+  background-image: url('/banners/Hero-Banner.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
- position: fixed;
- top: 0;
- left: 0;
- width: 100%;
- height: 500px;
+  position: relative;          
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 500px;
 
- display: flex;
- justify-content: flex-start;
- align-items: center;
+  display: flex;
+  justify-content: center;     
+  align-items: center;
 
- padding: calc(var(--header-height) + 40px) 20px 120px;
- color: #4B2E1E;
- text-align: left;
- z-index: -1;
-} 
+  color: #4B2E1E;
+  text-align: center;
 
-.hero-content { 
- background-color: rgba(255, 255, 255, 0.7);
- padding: 30px 40px;
- border-radius: 8px;
-} 
+  z-index: 0;                  
+}
 
-.hero h1 {
-  font-size: 2.8em;
+/* ==========================
+   Tagline Section (below hero)
+   ========================== */
+.tagline {
+  max-width: 900px;
+  margin: 20px auto;          
+  padding: 0 20px;
+  text-align: center;
+}
+
+.tagline p {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #4B2E1E;
   letter-spacing: 0.05em;
-  margin-bottom: 10px;
- }
-.hero p { font-size: 1.2em;
- margin-bottom: 20px; }
-
+  margin: 0;
+}
 
 /* ==========================
    Buttons
@@ -257,6 +263,10 @@ ul {
     letter-spacing: 0.08em; /* mobile readability */
   }
 
+  header > .button {
+    margin-bottom: 10px;
+  }
+
   .hero {
     height: 400px;
     padding: calc(var(--header-height) + 20px) 20px 80px;
@@ -270,3 +280,6 @@ ul {
     font-size: 1em;
   }
 }
+
+
+
