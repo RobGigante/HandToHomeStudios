@@ -178,6 +178,24 @@ Hero Section
 .hero p { font-size: 1.2em;
  margin-bottom: 20px; }
 
+/* ==========================
+   Tagline Section (below hero)
+   ========================== */
+.tagline {
+  max-width: 900px;
+  margin: 20px auto; /* space above/below tagline */
+  padding: 0 20px;
+  text-align: center;
+}
+
+.tagline p {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #4B2E1E;
+  letter-spacing: 0.05em; /* optional micro-kerning for all caps style */
+  margin: 0;
+}
+
 
 /* ==========================
    Buttons
@@ -256,4 +274,5 @@ ul {
     font-size: 1em;
   }
 }
+
 
