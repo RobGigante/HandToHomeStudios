@@ -14,37 +14,13 @@ body {
   line-height: 1.6;
 }
 
-/* ==========================
-   Body Background for pages without hero
-   ========================== */
-body.has-no-hero {
-  background-color: #faf7f2;
-  background-image: url('/backgrounds/linen-bg.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  color: #4B2E1E;
-}
-
-body.has-no-hero::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(250, 247, 242, 0.85);
-  pointer-events: none;
-  z-index: -1;
+h1, h2, h3 {
+  font-family: "Lucida Bright", Georgia, "Times New Roman", serif;
 }
 
 /* ==========================
    Headings
    ========================== */
-h1, h2, h3 {
-  font-family: "Lucida Bright", Georgia, "Times New Roman", serif;
-}
-
 h1 {
   font-weight: 700;
   font-size: 2.2em;
@@ -76,16 +52,15 @@ h3 {
    Header & Navigation
    ========================== */
 header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logo left, nav center, button right */
+  padding: 0 5%;
+  width: 100%;
+  height: var(--header-height);
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: var(--header-height);
-
-  display: flex;
-  align-items: center;      
-  justify-content: space-between; /* logo left, nav center, button right */
-  padding: 0 5%;            
   background: rgba(245, 240, 232, 0.75);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -95,22 +70,21 @@ header {
 /* Logo */
 header .site-logo {
   height: calc(var(--header-height) * 0.8);
+  flex: none;
   display: flex;
   align-items: center;
 }
-
 
 header .site-logo img {
   height: 100%;
   width: auto;
 }
 
-/* Centered nav */
+/* Centered navigation */
 header nav {
   display: flex;
   justify-content: center;
-  flex: 1; 
-  max-width: 60%; /* restrict nav width so button can appear fully */
+  flex: 1;
 }
 
 header nav a {
@@ -122,42 +96,23 @@ header nav a {
   white-space: nowrap;
 }
 
+/* Etsy button on right */
+.header-button {
+  flex: none; /* keeps button natural size */
+}
 
-/* Etsy button */
-header > .button {
+.header-button .button {
   font-weight: 700;
   padding: 10px 20px;
   border-radius: 5px;
-  background-color: #E35D2F;
+  background-color: #a67c52;
   color: #fff;
   text-decoration: none;
   white-space: nowrap;
-  flex-shrink: 0; /* prevent button from shrinking */
-}
-
-/* Non-hero pages use solid header */
-body.has-no-hero header {
-  position: relative;
-  background: #e8dfd3;
-  backdrop-filter: none;
 }
 
 /* ==========================
-   Content Container
-   ========================== */
-.content {
-  max-width: 900px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
-
-/* Extra spacing only on pages with hero */
-body:not(.has-no-hero) .content {
-  padding-top: 560px;
-}
-
-/* ==========================
-   Hero Section (just image)
+   Hero Section
    ========================== */
 .hero {
   background-image: url('/banners/Hero-Banner.jpg');
@@ -169,18 +124,13 @@ body:not(.has-no-hero) .content {
   width: 100%;
   height: 500px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   color: #4B2E1E;
   text-align: center;
-
   z-index: 0;
 }
 
 /* ==========================
-   Tagline Section (below hero)
+   Tagline Section
    ========================== */
 .tagline {
   max-width: 900px;
@@ -213,32 +163,9 @@ body:not(.has-no-hero) .content {
 }
 
 /* ==========================
-   Logos (used elsewhere)
-   ========================== */
-.logo-section {
-  margin-top: 80px;
-  text-align: center;
-}
-
-.secondary-logo {
-  width: 50vw;
-  max-width: 600px;
-  height: auto;
-}
-
-/* ==========================
-   Lists
-   ========================== */
-ul {
-  margin-left: 20px;
-  color: #4a3f3f;
-}
-
-/* ==========================
    Responsive tweaks
    ========================== */
 @media (max-width: 768px) {
-
   header {
     height: auto;
     padding: 10px 5%;
@@ -253,6 +180,7 @@ ul {
   header nav {
     flex-direction: column;
     width: 100%;
+    margin: 0 0 10px 0;
   }
 
   header nav a {
@@ -261,7 +189,7 @@ ul {
     letter-spacing: 0.08em;
   }
 
-  header > .button {
+  .header-button .button {
     margin-bottom: 10px;
   }
 
@@ -269,5 +197,3 @@ ul {
     height: 400px;
   }
 }
-
-
